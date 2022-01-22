@@ -34,34 +34,45 @@ void Contact::read_info()
 
 void Contact::print_info()
 {
-	std::cout << "First name " << this->firstName << std::endl;
-	std::cout << "Last name " << this->lastName << std::endl;
-	std::cout << "Nickname " << this->nickname << std::endl;
-	std::cout << "Phone number "<< this->phoneNumber << std::endl;
-	std::cout << "Darkest secret " << this->darkestSecret << std::endl;
+	std::cout << "First name: " << this->firstName << std::endl;
+	std::cout << "Last name: " << this->lastName << std::endl;
+	std::cout << "Nickname: " << this->nickname << std::endl;
+	std::cout << "Phone number: "<< this->phoneNumber << std::endl;
+	std::cout << "Darkest secret: " << this->darkestSecret << std::endl;
 }
 
 std::string Contact::get_trunc_first_name()
 {
 	std::string space;
-	if (this->firstName.length() <= 10)
-		return this->firstName + space.append(10u, ' ');
+	int len;
+
+	len = 10 - this->firstName.length();
+	if (len >= 0)
+		return space.append(len, ' ') + this->firstName;
 	else
 		return this->firstName.substr(0, 9) + ".";
 }
 
 std::string Contact::get_trunc_last_name()
 {
-	if (this->lastName.length() <= 10)
-		return this->lastName;
+	std::string space;
+	int len;
+
+	len = 10 - this->lastName.length();
+	if (len >= 0)
+		return space.append(len, ' ') + this->lastName;
 	else
 		return this->lastName.substr(0, 9) + ".";
 }
 
 std::string Contact::get_trunc_nickname()
 {
-	if (this->nickname.length() <= 10)
-		return this->nickname;
+	std::string space;
+	int len;
+
+	len = 10 - this->nickname.length();
+	if (len >= 0)
+		return space.append(len, ' ') + this->nickname;
 	else
 		return this->nickname.substr(0, 9) + ".";
 }
@@ -77,6 +88,7 @@ public:
 	void add_contact(void);
 	void list_contact(void);
 	void print_contact(int i);
+	void search_contact(void);
 	bool is_full();
 };
 
@@ -104,8 +116,20 @@ void PhoneBook::list_contact()
 		max = this->count;
 	for (int i = 0; i < max; i++)
 	{
-		std::cout << '|' << this->contacts[i].get_trunc_first_name() << '|' << std::endl;
+		std::cout << '|' << "         " << i;
+		std::cout << '|' << this->contacts[i].get_trunc_first_name();
+		std::cout << '|' << this->contacts[i].get_trunc_last_name();
+		std::cout << '|' << this->contacts[i].get_trunc_nickname() << '|' << std::endl;
 	}
+}
+
+void PhoneBook::search_contact()
+{
+	int i;
+
+	std::cout << "Enter Index: ";
+	std::cin >> i;
+	this->print_contact(i);
 }
 
 void PhoneBook::print_contact(int i)
@@ -132,8 +156,10 @@ int	main()
 		if (str == "ADD")
 			phone_book.add_contact();
 		else if (str == "SEARCH")
+		{
 			phone_book.list_contact();
-//		phone_book.print_contact(0);
+			phone_book.search_contact();
+		}
 	}
 	std::cout << str << std::endl;
 	return (0);
