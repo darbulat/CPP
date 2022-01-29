@@ -19,6 +19,8 @@ int main(int argc, char **argv)
 		name = "FIVE";
 	}
 	zombie = zombieHorde(N, name);
+	if (!zombie)
+		return 0;
 	i = 0;
 	while (i < N)
 	{
