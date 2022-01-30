@@ -4,11 +4,13 @@ FLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic
 
 SRCS = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 
+HEADERS = HumanA.h HumanB.h Weapon.h
+
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(HEADERS)
 			clang++ $(FLAGS) -o $(NAME) $(OBJS)
 
 .cpp.o:
