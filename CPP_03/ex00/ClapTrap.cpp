@@ -30,7 +30,7 @@ ClapTrap::~ClapTrap()
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &ct)
 {
-	name = ct.name;
+	name = ct.name + "_copy";
 	energyPoints = ct.energyPoints;
 	hitPoints = ct.hitPoints;
 	attackDamage = ct.attackDamage;
@@ -43,7 +43,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 	{
 		energyPoints--;
 		hitPoints += amount;
-		std::cout << "ClapTrap " << name << " repairs for "
+		std::cout << "ClapTrap " << name << " (" << energyPoints << ") repairs for "
 		<< amount << " hit points! Current hit points is " << hitPoints << std::endl;
 	}
 }
@@ -53,7 +53,7 @@ void ClapTrap::attack(const std::string &target)
 	if (energyPoints == 0 || hitPoints == 0)
 		return;
 	energyPoints--;
-	std::cout << "ClapTrap " << name << " attacks " << target << ", causing "
+	std::cout << "ClapTrap " << name << " (" << energyPoints << ") attacks " << target << ", causing "
 	<< attackDamage << " points of damage!" << std::endl;
 }
 
@@ -65,6 +65,6 @@ void ClapTrap::takeDamage(unsigned int amount)
 		hitPoints -= amount;
 	else
 		hitPoints = 0;
-	std::cout << "ClapTrap " << name << " takes " << amount <<
+	std::cout << "ClapTrap " << name << " (" << energyPoints << ") takes " << amount <<
 	" damage! Current hit points is " << hitPoints << std::endl;
 }
