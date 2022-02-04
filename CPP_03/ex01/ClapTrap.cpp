@@ -14,6 +14,7 @@ ClapTrap::ClapTrap(std::string ct_name): _name(ct_name), _hitPoints(10), _energy
 ClapTrap::ClapTrap(ClapTrap &ct)
 {
 	*this = ct;
+	std::cout << "ClapTrap '" << ct._name << "' copied to '" << _name << "'" << std::endl;
 }
 
 ClapTrap::~ClapTrap()

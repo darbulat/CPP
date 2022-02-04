@@ -7,4 +7,7 @@ int main( void )
 	a.takeDamage(10);
 	a.beRepaired(10);
 	a.guardGate();
+
+	std::cout << "___________________" << std::endl;
+	ScavTrap b(a);
 }
