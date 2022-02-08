@@ -2,6 +2,7 @@
 #define CPP_DOG_H
 
 #include "Animal.h"
+#include "Brain.h"
 
 class Dog : public Animal
 {
@@ -10,6 +11,8 @@ public:
 	~Dog();
 	void makeSound() const;
 
+private:
+	Brain *brain;
 };
 
 
