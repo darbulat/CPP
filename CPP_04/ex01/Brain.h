@@ -5,8 +5,15 @@
 
 class Brain
 {
+public:
+	Brain();
+	~Brain();
+	Brain(Brain const &brain);
+	Brain &operator = (Brain const &brain);
+	static const int  len = 100;
+
 private:
-	std::string ideas[100];
+	std::string ideas[len];
 };
 
 

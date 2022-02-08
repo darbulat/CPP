@@ -2,12 +2,12 @@
 
 Animal::Animal() : type("")
 {
-	std::cout << "Default constructor of Animal" << std::endl;
+	std::cout << "Animal: called default constructor." << std::endl;
 }
 
 Animal::~Animal()
 {
-	std::cout << "Default destructor of Animal" << std::endl;
+	std::cout << "Animal: called default destructor." << std::endl;
 }
 
 Animal::Animal(Animal &animal)
