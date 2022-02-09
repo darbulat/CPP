@@ -2,7 +2,7 @@ NAME = a.out
 
 FLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic
 
-SRCS = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp IMateriaSource.cpp MateriaSource.cpp
+SRCS = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

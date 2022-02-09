@@ -11,20 +11,21 @@ Ice::~Ice()
 	std::cout << "Ice: called destructor" << std::endl;
 }
 
-Ice::Ice(Ice const &ice) : AMateria("ice")
+Ice::Ice(Ice const &ice) : AMateria(ice)
 {
+	std::cout << "Ice: called copy constructor" << std::endl;
 	*this = ice;
 }
 
 Ice &Ice::operator=(const Ice &ice)
 {
-	type = ice.getType();
+	_type = ice.getType();
 	return *this;
 }
 
 AMateria *Ice::clone() const
 {
-	return new Ice();
+	return new Ice(*this);
 }
 
 void Ice::use(ICharacter &target)

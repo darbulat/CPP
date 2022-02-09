@@ -9,12 +9,13 @@ class ICharacter;
 class AMateria
 {
 protected:
-	std::string type;
+	std::string _type;
 
 public:
 	AMateria();
 	AMateria(std::string const & type);
-	AMateria(AMateria const *src);
+	AMateria(AMateria const &src);
+	std::string const & getType() const; //Returns the materia type
 	virtual ~AMateria();
 	virtual AMateria &operator = (AMateria const &src);
 	virtual AMateria* clone() const = 0;

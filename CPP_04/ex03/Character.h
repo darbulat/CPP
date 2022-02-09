@@ -8,17 +8,18 @@ class Character : public ICharacter
 
 public:
 	Character();
-	~Character();
+	virtual ~Character();
 	Character( Character const &character );
+	Character( std::string name );
 	Character &operator = ( Character const &character );
 
-	std::string const & getName() const;
+	virtual std::string const & getName() const;
 	virtual void equip(AMateria* m);
 	virtual void unequip(int idx);
 	virtual void use(int idx, ICharacter& target);
 
 private:
-	std::string name;
+	std::string _name;
 
 };
 

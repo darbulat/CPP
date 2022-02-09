@@ -10,7 +10,6 @@ public:
 	~Ice();
 	Ice(Ice const &ice);
 	Ice &operator = ( Ice const &ice );
-	std::string const & getType() const; //Returns the materia type
 	virtual AMateria* clone() const;
 	virtual void use(ICharacter& target);
 
