@@ -10,14 +10,14 @@ AAnimal::~AAnimal()
 	std::cout << "AAnimal: called default destructor." << std::endl;
 }
 
-AAnimal::AAnimal(AAnimal &AAnimal)
+AAnimal::AAnimal(AAnimal &animal)
 {
 	std::cout << "AAnimal: called copy constructor." << std::endl;
-	*this = AAnimal;
+	*this = animal;
 }
 
-AAnimal &AAnimal::operator=( const AAnimal &AAnimal )
+AAnimal &AAnimal::operator=( const AAnimal &animal )
 {
-	type = AAnimal.type;
+	type = animal.type;
 	return *this;
 }

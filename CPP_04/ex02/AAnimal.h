@@ -11,8 +11,8 @@ protected:
 public:
 	AAnimal();
 	virtual ~AAnimal();
-	AAnimal(AAnimal &AAnimal);
-	virtual AAnimal &operator=(AAnimal const &AAnimal);
+	AAnimal(AAnimal &animal);
+	virtual AAnimal &operator=(AAnimal const &animal);
 	virtual void makeSound() const = 0;
 };
 
