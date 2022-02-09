@@ -12,6 +12,7 @@ Animal::~Animal()
 
 Animal::Animal(Animal &animal)
 {
+	std::cout << "Animal: called copy constructor." << std::endl;
 	*this = animal;
 }
 
@@ -24,9 +25,4 @@ Animal &Animal::operator=( const Animal &animal )
 void Animal::makeSound() const
 {
 	std::cout << "My name is Animal" << std::endl;
-}
-
-std::string Animal::getType() const
-{
-	return type;
 }

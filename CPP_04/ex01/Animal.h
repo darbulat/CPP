@@ -14,7 +14,6 @@ public:
 	Animal(Animal &animal);
 	Animal &operator=(Animal const &animal);
 	virtual void makeSound() const;
-	std::string getType() const;
 };
 
 

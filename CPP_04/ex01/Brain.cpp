@@ -12,6 +12,7 @@ Brain::~Brain()
 
 Brain::Brain(const Brain &brain)
 {
+	std::cout << "Brain: called copy constructor." << std::endl;
 	*this = brain;
 }
 

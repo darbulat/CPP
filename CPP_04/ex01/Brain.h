@@ -10,9 +10,9 @@ public:
 	~Brain();
 	Brain(Brain const &brain);
 	Brain &operator = (Brain const &brain);
-	static const int  len = 100;
 
 private:
+	static const int  len = 100;
 	std::string ideas[len];
 };
 
