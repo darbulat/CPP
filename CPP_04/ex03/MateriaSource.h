@@ -10,11 +10,12 @@ public:
 	~MateriaSource();
 	MateriaSource(MateriaSource const &source);
 	MateriaSource &operator = (MateriaSource const &source);
-	virtual void learnMateria(AMateria *);
+	virtual void learnMateria(AMateria *materia);
 	virtual AMateria * createMateria(const std::string &type);
 
 private:
-
+	static const int len = 4;
+	AMateria *slot[len];
 };
 
 
