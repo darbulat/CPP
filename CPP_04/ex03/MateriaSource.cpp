@@ -9,10 +9,8 @@ MateriaSource::MateriaSource()
 MateriaSource::~MateriaSource()
 {
 	for (int i = 0; i < len; i++)
-	{
 		if (slot[i])
 			delete slot[i];
-	}
 }
 
 MateriaSource::MateriaSource(const MateriaSource &source)

@@ -3,17 +3,14 @@
 
 Cure::Cure() : AMateria("cure")
 {
-	std::cout << "Cure: called default constructor" << std::endl;
 }
 
 Cure::~Cure()
 {
-	std::cout << "Cure: called destructor" << std::endl;
 }
 
 Cure::Cure(Cure const &cure) : AMateria(cure)
 {
-	std::cout << "Cure: called copy constructor" << std::endl;
 	*this = cure;
 }
 

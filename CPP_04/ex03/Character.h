@@ -17,12 +17,13 @@ public:
 	virtual void equip(AMateria* m);
 	virtual void unequip(int idx);
 	virtual void use(int idx, ICharacter& target);
+	AMateria			*unequipped[100];
 
 private:
 	static const int	len = 4;
 	AMateria			*slot[len];
 	std::string			_name;
-
+	void 				_push_materia(AMateria *materia);
 };
 
 

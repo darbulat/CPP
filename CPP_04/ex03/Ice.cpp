@@ -3,17 +3,14 @@
 
 Ice::Ice() : AMateria("ice")
 {
-	std::cout << "Ice: called default constructor" << std::endl;
 }
 
 Ice::~Ice()
 {
-	std::cout << "Ice: called destructor" << std::endl;
 }
 
 Ice::Ice(Ice const &ice) : AMateria(ice)
 {
-	std::cout << "Ice: called copy constructor" << std::endl;
 	*this = ice;
 }
 
