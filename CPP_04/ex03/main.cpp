@@ -10,15 +10,22 @@ int main()
 	AMateria* tmp;
 	tmp = new Ice();
 //	tmp = src->createMateria("ice");
-//	me->equip(tmp);
+	me->equip(tmp);
 //	tmp = src->createMateria("cure");
-//	me->equip(tmp);
-	ICharacter* bob = new Character("bob");
-//	me->use(0, *bob);
-//	me->use(1, *bob);
+	me->equip(tmp);
+	me->equip(tmp);
+	me->equip(tmp);
+	me->unequip(0);
+	me->unequip(0);
+	me->equip(tmp);
 
-	delete bob;
+	ICharacter* bob = new Character("bob");
+	me->use(0, *bob);
+	me->use(1, *bob);
+	delete tmp;
 	delete me;
 //	delete src;
+
+	delete bob;
 	return 0;
 }

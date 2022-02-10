@@ -19,7 +19,9 @@ public:
 	virtual void use(int idx, ICharacter& target);
 
 private:
-	std::string _name;
+	static const int	len = 4;
+	AMateria			*slot[len];
+	std::string			_name;
 
 };
 
