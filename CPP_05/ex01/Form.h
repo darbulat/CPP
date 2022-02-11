@@ -2,6 +2,9 @@
 #define CPP_FORM_H
 
 #include <iostream>
+#include "Bureaucrat.h"
+
+class Bureaucrat;
 
 class Form
 {
@@ -14,6 +17,7 @@ public:
 	int getExecuteGrade() const;
 	std::string getName() const;
 	bool getIsSigned() const;
+	void beSigned(const Bureaucrat &b);
 
 private:
 	const std::string	_name;

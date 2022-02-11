@@ -2,6 +2,9 @@
 #define CPP_BUREAUCRAT_H
 
 #include <iostream>
+#include "Form.h"
+
+class Form;
 
 class Bureaucrat
 {
@@ -15,6 +18,8 @@ public:
 	std::string	getName() const;
 	void 		incrementGrade(int val);
 	void 		decrementGrade(int val);
+
+	void		signForm(Form &f);
 
 private:
 	Bureaucrat();
