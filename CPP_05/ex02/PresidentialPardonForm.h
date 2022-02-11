@@ -1,0 +1,11 @@
+#ifndef CPP_PRESIDENTIALPARDONFORM_H
+#define CPP_PRESIDENTIALPARDONFORM_H
+
+
+class PresidentialPardonForm
+{
+
+};
+
+
+#endif //CPP_PRESIDENTIALPARDONFORM_H
