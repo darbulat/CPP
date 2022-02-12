@@ -20,6 +20,7 @@ public:
 	void 		decrementGrade(int val);
 
 	void		signForm(Form &f);
+	void		executeForm(Form const & form);
 
 private:
 	Bureaucrat();

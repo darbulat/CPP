@@ -2,7 +2,7 @@ NAME = a.out
 
 FLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic
 
-SRCS = main.cpp Bureaucrat.cpp Form.cpp
+SRCS = main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
