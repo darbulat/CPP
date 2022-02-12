@@ -33,14 +33,14 @@ int Bureaucrat::getGrade() const
 	return _grade;
 }
 
-void Bureaucrat::decrementGrade(int val)
+void Bureaucrat::incrementGrade(int val)
 {
 	if (_grade - val < 1)
 		throw GradeTooHighException();
 	_grade -= val;
 }
 
-void Bureaucrat::incrementGrade(int val)
+void Bureaucrat::decrementGrade(int val)
 {
 	if (_grade + val > 150)
 		throw GradeTooLowException();
