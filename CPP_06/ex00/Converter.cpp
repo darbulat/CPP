@@ -1,4 +1,5 @@
 #include "Converter.h"
+#include <stdlib.h>
 
 Converter::Converter()
 {
@@ -6,6 +7,7 @@ Converter::Converter()
 	c = 0;
 	f = 0;
 	d = 0;
+	type = wrong_;
 }
 
 Converter::~Converter()
@@ -22,6 +24,7 @@ Converter &Converter::operator=(const Converter &c)
 	this->c = c.c;
 	this->f = c.f;
 	this->d = c.d;
+	this->type = c.type;
 	return *this;
 }
 
@@ -45,21 +48,81 @@ float Converter::getFloat()
 	return f;
 }
 
-Converter::types Converter::getType(std::string s)
+std::string Converter::getType()
 {
-	(void)s;
-	return double_;
+	if (type == int_)
+		return "Integer";
+	if (type == float_ || type == nanf_)
+		return "Float";
+	if (type == double_ || type == nan_)
+		return "Double";
+	if (type == char_)
+		return "Char";
+	else
+		return "Wrong format";
 }
 
-void Converter::setValues()
+Converter::types Converter::getType(std::string s)
 {
+	int	i = 0;
+	int	dotCount = 0;
 
+	if (s == "")
+		return wrong_;
+	if ((s[0] == '-' || s[0] == '+') && s[1])
+		i++;
+
+	if (!s.compare(i, 5, "nan") || !s.compare(i, 5, "inf"))
+		return nan_;
+	if (!s.compare(i, 5, "nanf") || !s.compare(i, 5, "inff"))
+		return nanf_;
+	if (s[i] == '.' && (s[i + 1] == 'f' || s[i + 1] == 0))
+		return wrong_;
+	while (s[i] == '.' || ft_isdigit(s[i]))
+	{
+		if (s[i] == '.')
+			dotCount++;
+		if (dotCount > 1)
+			return wrong_;
+		i++;
+	}
+	if (!s[i])
+	{
+		if (dotCount == 1)
+			return double_;
+		return int_;
+	}
+	else if (s[i] == 'f' && !s[i + 1] && dotCount == 1)
+		return float_;
+	return wrong_;
+}
+
+void Converter::setType(std::string s)
+{
+	type = getType(s);
+}
+
+void Converter::setValues( std::string s )
+{
+	setType(s);
+//	if (type == int_)
+	{
+		c = static_cast<char>(atoi(s.c_str()));
+		i = static_cast<int>(atoi(s.c_str()));
+		d = static_cast<double>(atof(s.c_str()));
+		f = static_cast<float>(atof(s.c_str()));
+	}
 }
 
 void Converter::printValues()
 {
-	std::cout << c << std::endl;
-	std::cout << i << std::endl;
-	std::cout << f << std::endl;
-	std::cout << d << std::endl;
+	std::cout << "char: " << c << std::endl;
+	std::cout << "int: " << i << std::endl;
+	std::cout << "float: " << f << "f" << std::endl;
+	std::cout << "double: " << d << std::endl;
+}
+
+bool Converter::ft_isdigit(char c)
+{
+	return (c >= '0' && c <= '9');
 }

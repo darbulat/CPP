@@ -28,19 +28,13 @@ STR2INT_ERROR str2int (int &i, char const *s, int base = 10)
 
 int main(int argc, char **argv)
 {
-	int i = -1;
-	(void)argc;
-	(void)argv;
-	char s[] = "1337.0";
-	STR2INT_ERROR status;
-
-	status = str2int(i, s);
-	if (status == SUCCESS)
-		std::cout << "Success " << i << std::endl;
-	else
-		std::cout << "Fail " << i << std::endl;
-
+	if (argc != 2)
+	{
+		std::cerr << "Wrong number of arguments" << std::endl;
+		return 0;
+	}
 	Converter converter;
-	std::cout << converter.getDouble() << std::endl;
-	std::cout << converter.getType("adsf") << std::endl;
+	converter.setValues(argv[1]);
+	std::cout << converter.getType() << std::endl;
+	converter.printValues();
 }
