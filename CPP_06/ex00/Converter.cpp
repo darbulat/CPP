@@ -1,5 +1,6 @@
 #include "Converter.h"
 #include <stdlib.h>
+#include "limits.h"
 
 Converter::Converter()
 {
@@ -69,6 +70,12 @@ Converter::types Converter::getType(std::string s)
 
 	if (s == "")
 		return wrong_;
+	if (s.length() == 1)
+	{
+		if (ft_isdigit(s[0]))
+			return int_;
+		return char_;
+	}
 	if ((s[0] == '-' || s[0] == '+') && s[1])
 		i++;
 
@@ -100,15 +107,24 @@ Converter::types Converter::getType(std::string s)
 void Converter::setType(std::string s)
 {
 	type = getType(s);
+	if (type == wrong_)
+		throw WrongFormatException();
 }
 
 void Converter::setValues( std::string s )
 {
 	setType(s);
-//	if (type == int_)
+	if (type == char_)
 	{
-		c = static_cast<char>(atoi(s.c_str()));
-		i = static_cast<int>(atoi(s.c_str()));
+		c = s[0];
+		i = static_cast<long int>(s[0]);
+		d = static_cast<double>(i);
+		f = static_cast<float>(i);
+	}
+	else
+	{
+		c = static_cast<unsigned char>(atoi(s.c_str()));
+		i = static_cast<long int>(atoi(s.c_str()));
 		d = static_cast<double>(atof(s.c_str()));
 		f = static_cast<float>(atof(s.c_str()));
 	}
@@ -116,13 +132,47 @@ void Converter::setValues( std::string s )
 
 void Converter::printValues()
 {
-	std::cout << "char: " << c << std::endl;
-	std::cout << "int: " << i << std::endl;
-	std::cout << "float: " << f << "f" << std::endl;
-	std::cout << "double: " << d << std::endl;
+	if (type == nan_ || type == nanf_)
+		std::cout << "char: impossible" << std::endl;
+	else if (d > UCHAR_MAX)
+		std::cout << "char: Overflow" << std::endl;
+	else if (d < 0)
+		std::cout << "char: Underflow" << std::endl;
+	else if (i < 32)
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: '" << c << "'" << std::endl;
+
+	if (type == nan_ || type == nanf_)
+		std::cout << "int: impossible" << std::endl;
+	else if (d > INT_MAX)
+		std::cout << "int: Overflow" << std::endl;
+	else if (d < INT_MIN)
+		std::cout << "int: Underflow" << std::endl;
+	else
+		std::cout << "int: " << i << std::endl;
+
+	std::cout << "float: " << f << printDotZero(f) << "f" << std::endl;
+	std::cout << "double: " << d << printDotZero(d) << std::endl;
 }
 
 bool Converter::ft_isdigit(char c)
 {
 	return (c >= '0' && c <= '9');
+}
+
+const std::string Converter::printDotZero( double number )
+{
+	int tmp;
+	tmp = static_cast<int>(number);
+	if (tmp > 999999 || tmp < -999999)
+		return "";
+	if (number - tmp == 0.0)
+		return ".0";
+	return "";
+}
+
+const char *Converter::WrongFormatException::what() const throw()
+{
+	return "Wrong input format";
 }

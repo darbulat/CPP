@@ -24,13 +24,22 @@ public:
 	double		getDouble();
 
 private:
-	int			i;
-	char		c;
-	float		f;
-	double		d;
-	std::string	str;
-	static bool	ft_isdigit(char c);
-	Converter::types type;
+	long int			i;
+	unsigned char		c;
+	float				f;
+	double				d;
+	std::string			str;
+	static bool			ft_isdigit(char c);
+	Converter::types	type;
+	const std::string 	printDotZero( double number );
+
+public:
+	class WrongFormatException : public std::exception
+	{
+	public:
+		const char * what() const throw();
+	};
+
 
 };
 
