@@ -1,45 +1,29 @@
-#include <iostream>
-#include <cstdlib>
-#include "iter.h"
-
-template<typename T>
-void display( T &whatever )
-{
-	std::cout << whatever << std::endl;
-}
-
-void setRandomValue( int &number )
-{
-	number = std::rand();
-}
-
-void setRandomValue( float &number )
-{
-	number = std::rand() / 100;
-}
-
-void setRandomValue( char &char_ )
-{
-	char_ = std::rand() % 25 + 97;
-}
-
+#include "Array.h"
 
 
 int	main( void )
 {
-	int *intTable = new int[5];
-	float *floatTable = new float[5];
-	char *charTable = new char[5];
+	int size = 5;
+	Array<int> *array = new Array<int>(size);
+	Array<int> array1(*array);
+	array1[1] = 133131;
+	for (unsigned int i = 0; i < array1.size(); i++)
+		std::cout << i << ": " << array1[i] << std::endl;
+	try
+	{
+		std::cout << array1[size] << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 
-	for (int i = 0; i < 5; i ++)
-		setRandomValue(intTable[i]);
-	iter(intTable, 5, &display);
-	std::cout << "----------------" << std::endl;
-	for (int i = 0; i < 5; i ++)
-		setRandomValue(floatTable[i]);
-	iter(floatTable, 5, &display);
-	std::cout << "----------------" << std::endl;
-	for (int i = 0; i < 5; i ++)
-		setRandomValue(charTable[i]);
-	iter(charTable, 5, &display);
+	delete array;
+	Array<std::string> strarr;
+	std::cout << "size: " << strarr.size() << std::endl;
+	Array<std::string> strarr1(1);
+	std::cout << "size: " << strarr1.size() << std::endl;
+	strarr1[0] = "String value";
+	std::cout << "0: " << strarr1[0] << std::endl;
+
 }

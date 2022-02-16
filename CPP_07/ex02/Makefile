@@ -8,7 +8,7 @@ OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) Array.h
 			c++ $(FLAGS) -o $(NAME) $(OBJS)
 
 .cpp.o:
