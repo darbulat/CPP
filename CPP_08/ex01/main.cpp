@@ -11,7 +11,7 @@ int	main( void )
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 
-	Span s(1000000);
+	Span s(10000);
 	s.randomFillContainer();
 	std::cout << s.shortestSpan() << std::endl;
 	std::cout << s.longestSpan() << std::endl;
